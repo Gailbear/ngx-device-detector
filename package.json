@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/KoderLabs/ngx-device-detector.git"
+    "url": "https://github.com/Gailbear/ngx-device-detector.git"
   },
   "author": {
     "name": "Ahsan Ayaz",
@@ -35,7 +35,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AhsanAyaz/ngx-device-detector.git/issues"
+    "url": "https://github.com/Gailbear/ngx-device-detector.git/issues"
   },
   "devDependencies": {
     "@angular/common": "^6.0.0",
