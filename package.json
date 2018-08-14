@@ -14,8 +14,7 @@
     "playground": "concurrently \"npm run build:watch\" \"npm run playground:build\" \"npm run lite\"",
     "test": "tsc && karma start",
     "pre-release": "npm run lint && npm run build && npm run docs:build",
-    "release": "npm publish dist",
-    "postinstall": "npm run build"
+    "release": "npm publish dist"
   },
   "repository": {
     "type": "git",
