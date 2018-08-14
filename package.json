@@ -15,7 +15,8 @@
     "test": "tsc && karma start",
     "pre-release": "npm run lint && npm run build && npm run docs:build",
     "release": "npm publish dist",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "postinstall": "npm install && npm run build"
   },
   "repository": {
     "type": "git",
