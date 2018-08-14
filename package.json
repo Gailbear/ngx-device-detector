@@ -15,7 +15,7 @@
     "test": "tsc && karma start",
     "pre-release": "npm run lint && npm run build && npm run docs:build",
     "release": "npm publish dist",
-    "postinstall": "npm install gulp && npm run build"
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
   "bugs": {
     "url": "https://github.com/Gailbear/ngx-device-detector.git/issues"
   },
-  "devDependencies": {
+  "dependencies": {
     "@angular/common": "^6.0.0",
     "@angular/compiler": "^6.0.0",
     "@angular/compiler-cli": "^6.0.0",
