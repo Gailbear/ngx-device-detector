@@ -10,6 +10,7 @@ export declare const BROWSERS: {
     MS_EDGE: string;
     FB_MESSANGER: string;
     SAMSUNG: string;
+    UCBROWSER: string;
     UNKNOWN: string;
 };
 export declare const DEVICES: {

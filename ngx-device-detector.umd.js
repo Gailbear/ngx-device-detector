@@ -6,12 +6,11 @@
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * Created by ahsanayaz on 08/11/2016.
  */
-/** @type {?} */
 var BROWSERS = {
     CHROME: 'chrome',
     FIREFOX: 'firefox',
@@ -21,9 +20,9 @@ var BROWSERS = {
     MS_EDGE: 'ms-edge',
     FB_MESSANGER: 'fb-messanger',
     SAMSUNG: 'samsung',
+    UCBROWSER: 'uc-browser',
     UNKNOWN: 'unknown'
 };
-/** @type {?} */
 var DEVICES = {
     ANDROID: 'android',
     I_PAD: 'ipad',
@@ -40,7 +39,6 @@ var DEVICES = {
     GOOGLE_TV: 'google-tv',
     UNKNOWN: 'unknown'
 };
-/** @type {?} */
 var OS = {
     WINDOWS: 'windows',
     MAC: 'mac',
@@ -53,7 +51,6 @@ var OS = {
     WINDOWS_PHONE: 'windows-phone',
     UNKNOWN: 'unknown'
 };
-/** @type {?} */
 var OS_VERSIONS = {
     WINDOWS_3_11: 'windows-3-11',
     WINDOWS_95: 'windows-95',
@@ -89,7 +86,6 @@ var OS_VERSIONS = {
     MACOSX: 'mac-os-x',
     UNKNOWN: 'unknown'
 };
-/** @type {?} */
 var OS_RE = {
     WINDOWS: { and: [{ or: [/\bWindows|(Win\d\d)\b/, /\bWin 9x\b/] }, { not: /\bWindows Phone\b/ }] },
     MAC: { and: [/\bMac OS\b/, { not: /\bWindows Phone\b/ }] },
@@ -103,20 +99,21 @@ var OS_RE = {
     PS4: /\bMozilla\/5.0 \(PlayStation 4\b/,
     VITA: /\bMozilla\/5.0 \(Play(S|s)tation Vita\b/
 };
-/** @type {?} */
 var BROWSERS_RE = {
-    CHROME: { and: [{ or: [/\bChrome\b/, /\bCriOS\b/] }, { not: { or: [/\bOPR\b/, /\bEdg(e|A|iOS)\b/, /\bSamsungBrowser\b/] } }] },
+    CHROME: { and: [{ or: [/\bChrome\b/, /\bCriOS\b/] }, { not: { or: [/\bOPR\b/, /\bEdg(e|A|iOS)\b/, /\bSamsungBrowser\b/, /\bUCBrowser\b/] } }] },
     FIREFOX: { or: [/\bFirefox\b/, /\bFxiOS\b/] },
-    SAFARI: { and: [/^((?!CriOS).)*\Safari\b.*$/, { not: { or: [/\bOPR\b/, /\bEdg(e|A|iOS)\b/, /\bWindows Phone\b/, /\bSamsungBrowser\b/] } }] },
+    SAFARI: { and: [/^((?!CriOS).)*\Safari\b.*$/, { not: {
+                    or: [/\bOPR\b/, /\bEdg(e|A|iOS)\b/, /\bWindows Phone\b/, /\bSamsungBrowser\b/, /\bUCBrowser\b/]
+                } }] },
     OPERA: { or: [/Opera\b/, /\bOPR\b/] },
     IE: { or: [/\bMSIE\b/, /\bTrident\b/, /^Mozilla\/5\.0 \(Windows NT 10\.0; Win64; x64\)$/] },
     MS_EDGE: { or: [/\bEdg(e|A|iOS)\b/] },
     PS4: /\bMozilla\/5.0 \(PlayStation 4\b/,
     VITA: /\bMozilla\/5.0 \(Play(S|s)tation Vita\b/,
     FB_MESSANGER: /\bFBAN\/MessengerForiOS\b/,
-    SAMSUNG: /\bSamsungBrowser\b/
+    SAMSUNG: /\bSamsungBrowser\b/,
+    UCBROWSER: /\bUCBrowser\b/,
 };
-/** @type {?} */
 var DEVICES_RE = {
     ANDROID: { and: [/\bAndroid\b/, { not: /Windows Phone/ }] },
     I_PAD: /\biPad\b/,
@@ -132,7 +129,6 @@ var DEVICES_RE = {
     GOOGLE_TV: /\bGoogleTV\b/,
     VITA: /\bMozilla\/5.0 \(Play(S|s)tation Vita\b/
 };
-/** @type {?} */
 var OS_VERSIONS_RE = {
     WINDOWS_3_11: /Win16/,
     WINDOWS_95: /(Windows 95|Win95|Windows_95)/,
@@ -166,17 +162,16 @@ var OS_VERSIONS_RE = {
     MACOSX_14: /(Mac OS X 10.14)/,
     MACOSX_15: /(Mac OS X 10.15)/
 };
-/** @type {?} */
 var BROWSER_VERSIONS_RE_MAP = {
     CHROME: [/\bChrome\/([\d\.]+)\b/, /\bCriOS\/([\d\.]+)\b/],
     FIREFOX: /\bFirefox\/([\d\.]+)\b/,
     SAFARI: /\bVersion\/([\d\.]+)\b/,
     OPERA: [/\bVersion\/([\d\.]+)\b/, /\bOPR\/([\d\.]+)\b/],
     IE: [/\bMSIE ([\d\.]+\w?)\b/, /\brv:([\d\.]+\w?)\b/],
-    MS_EDGE: /\bEdg(e|A|iOS)\/([\d\.]+)\b/,
-    SAMSUNG: /\bSamsungBrowser\/([\d\.]+)\b/
+    MS_EDGE: /\bEdg(?:e|A|iOS)\/([\d\.]+)\b/,
+    SAMSUNG: /\bSamsungBrowser\/([\d\.]+)\b/,
+    UCBROWSER: /\bUCBrowser\/([\d\.]+)\b/,
 };
-/** @type {?} */
 var BROWSER_VERSIONS_RE = Object.keys(BROWSER_VERSIONS_RE_MAP).reduce(function (obj, key) {
     obj[BROWSERS[key]] = BROWSER_VERSIONS_RE_MAP[key];
     return obj;
@@ -198,7 +193,7 @@ var Constants = Object.freeze({
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * Created by ahsanayaz on 08/11/2016.
@@ -217,8 +212,7 @@ var ReTree = /** @class */ (function () {
      * @return {?}
      */
     function (string, regex) {
-        /** @type {?} */
-        var self = this;
+        var /** @type {?} */ self = this;
         if (typeof regex === 'string') {
             regex = new RegExp(regex);
         }
@@ -253,8 +247,7 @@ var ReTree = /** @class */ (function () {
      * @return {?}
      */
     function (string, regex) {
-        /** @type {?} */
-        var self = this;
+        var /** @type {?} */ self = this;
         if (typeof regex === 'string') {
             regex = new RegExp(regex);
         }
@@ -275,7 +268,7 @@ var ReTree = /** @class */ (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * @record
@@ -310,13 +303,10 @@ var DeviceDetectorService = /** @class */ (function () {
      */
     function () {
         var _this = this;
-        /** @type {?} */
-        var reTree = new ReTree();
-        /** @type {?} */
-        var ua = this.ua;
+        var /** @type {?} */ reTree = new ReTree();
+        var /** @type {?} */ ua = this.ua;
         this.userAgent = ua;
-        /** @type {?} */
-        var mappings = [
+        var /** @type {?} */ mappings = [
             { const: 'OS', prop: 'os' },
             { const: 'BROWSERS', prop: 'browser' },
             { const: 'DEVICES', prop: 'device' },
@@ -339,10 +329,8 @@ var DeviceDetectorService = /** @class */ (function () {
         });
         this.browser_version = '0';
         if (this.browser !== BROWSERS.UNKNOWN) {
-            /** @type {?} */
-            var re = BROWSER_VERSIONS_RE[this.browser];
-            /** @type {?} */
-            var res = reTree.exec(ua, re);
+            var /** @type {?} */ re = BROWSER_VERSIONS_RE[this.browser];
+            var /** @type {?} */ res = reTree.exec(ua, re);
             if (!!res) {
                 this.browser_version = res[1];
             }
@@ -359,8 +347,7 @@ var DeviceDetectorService = /** @class */ (function () {
      * @return {?} the device information object.
      */
     function () {
-        /** @type {?} */
-        var deviceInfo = {
+        var /** @type {?} */ deviceInfo = {
             userAgent: this.userAgent,
             os: this.os,
             browser: this.browser,
@@ -447,14 +434,14 @@ var DeviceDetectorService = /** @class */ (function () {
     ];
     /** @nocollapse */
     DeviceDetectorService.ctorParameters = function () { return [
-        { type: undefined, decorators: [{ type: core.Inject, args: [core.PLATFORM_ID,] }] }
+        { type: undefined, decorators: [{ type: core.Inject, args: [core.PLATFORM_ID,] },] },
     ]; };
     return DeviceDetectorService;
 }());
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 var DeviceDetectorModule = /** @class */ (function () {
     function DeviceDetectorModule() {
